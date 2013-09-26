@@ -7,7 +7,7 @@ feature 'add a building owner', %Q{
 } do 
 
   # Acceptance Criteria
-  # * I must specify a first name, last name, 
+  # * I must specify a building owner's first name, last name, 
   #   and email address
 
   # * I can optionally specify a company name
@@ -20,18 +20,27 @@ feature 'add a building owner', %Q{
   #   I am presented with errors
 
   scenario 'specify valid owner information' do 
-   
-    visit new_building_owner_url
+    #---totally not DRY...but it's green---
+    visit new_building_url
+    fill_in 'Street address', with: '2 China Moon'
+    fill_in 'City', with: 'Ormond Beach'
+    select 'Florida', from: 'State'
+    fill_in 'Postal code', with: 12345
+    fill_in 'Description', with: 'Grade A Building'
     fill_in 'First name', with: 'Lloyd'
     fill_in 'Last name', with: 'Christmas'
-    select 'Email', from: 'mostannoyingsound@gmail.com'
+    fill_in 'Email', with: 'mostannoyingsound@gmail.com'
     fill_in 'Company name', with: 'The Rockies'
 
     click_button 'Save'
-    expect(page).to have_content('Owner has been saved.')
+    expect(page).to have_content('Information has been saved.')
   end
 
-  scenario 'specify invalid information' do 
+  scenario 'specify invalid information' do
+    visit new_building_url
+
+    click_button 'Save'
+    expect(page).to have_content("can't be blank")
   end 
 
 end 

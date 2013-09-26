@@ -1,15 +1,31 @@
 class BuildingsController < ApplicationController
-  def new
-    @building = Building.new 
+  before_action :set_building, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @building = Building.all 
   end
+
+  def new
+    @building = Building.new
+  end
+
 
   def create
     @building = Building.new(building_params)
 
     if @building.save
-      redirect_to new_building_path, notice: 'Building has been saved.'
+      redirect_to new_building_path, notice: 'Information has been saved.'
     else
       render :new
+    end
+  end
+
+   def destroy
+    @building = Building.find(params[:id])
+    @building.destroy
+    respond_to do |format|
+      format.html { redirect_to buildings_path }
+      format.json { head :no_content}
     end
   end
 
@@ -19,4 +35,8 @@ class BuildingsController < ApplicationController
       :street_address, :city, :state, 
       :postal_code, :description)
   end 
+
+  def set_building
+    @building = Building.find(params[:id])
+  end
 end

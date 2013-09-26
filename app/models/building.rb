@@ -2,6 +2,8 @@ class Building < ActiveRecord::Base
   belongs_to :owner,
     inverse_of: :buildings 
 
+  accepts_nested_attributes_for :owner
+
   validates_presence_of :street_address
   validates_presence_of :city
   validates_presence_of :state

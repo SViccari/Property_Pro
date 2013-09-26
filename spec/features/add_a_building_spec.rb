@@ -9,6 +9,7 @@ feature 'add a building', %Q{
   # Acceptance Criteria
 
   # * I must specify a street address, city, state, and postal code
+
   # * Only US states can be specified
 
   # * I can optionally specify a description of the building
@@ -35,7 +36,7 @@ feature 'add a building', %Q{
     fill_in 'Description', with: 'Grade A Building'
 
     click_button 'Save'
-    expect(page).to have_content('Building has been saved.')
+    expect(page).to have_content('Information has been saved.')
     expect(Building.count).to eql(prev_count +1 )
   end
 
