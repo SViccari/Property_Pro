@@ -16,13 +16,13 @@ feature 'add a building', %Q{
   # * Upon successfully creating a building, I am redirected so that I can record another building.
 
 
-
   scenario 'specify valid information' do 
+    prev_count = Building.count
     visit new_building_url
     fill_in 'Street address', with: '2 China Moon'
     fill_in 'City', with: 'Ormond Beach'
-    select 'FL', from: 'State'
-    fill_in 'Postal code', with: '12345'
+    select 'Florida', from: 'State'
+    fill_in 'Postal code', with: 12345
     fill_in 'Description', with: 'Grade A Building'
 
     click_button 'Save'
@@ -30,7 +30,13 @@ feature 'add a building', %Q{
     expect(Building.count).to eql(prev_count +1 )
   end
 
-  scenario 'specify invalid information' do 
-  end 
+  scenario 'specify invalid information' do
+    prev_count = Building.count 
+    
+    visit new_building_url
 
-end
+    click_button 'Save'
+    expect(page).to have_content("can't be blank")
+    expect(Building.count).to eql(prev_count)
+  end
+end 
