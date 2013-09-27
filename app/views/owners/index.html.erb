@@ -1,0 +1,30 @@
+<h1>Current Owners</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Company</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @owner.each do |owner| %>
+      <tr>
+        <td><%= owner.first_name %></td>
+        <td><%= owner.last_name %></td>
+        <td><%= owner.email %></td>
+        <td><%= link_to 'Show', owner %></td>
+        <td><%= link_to 'Edit', edit_owner_path(owner) %></td>
+        <td><%= link_to 'Destroy', owner_path(owner), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<!--         delete is HTTP verb used to hit the Rails destroy action
+        destroy is the Rails action -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Properties', buildings_path %><br>
+<%= link_to 'Add New Owner', new_owner_path %>

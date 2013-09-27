@@ -1,0 +1,35 @@
+<%= form_for @owner do |f| %>
+  <%- if @owner.errors.size > 0 -%>
+  <ul class="errors">
+    <%- @owner.errors.full_messages.each do |error| -%>
+      <li><%= error %></li>
+    <%- end -%>
+  </ul>
+  <%- end -%>
+  
+  <div>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :company_name %><br>
+    <%= f.text_field :company_name %>
+  </div>
+
+  <div>
+    <%= f.submit 'Save' %>
+  </div>
+<%- end -%>
+
+<%= link_to 'Home', buildings_path %>

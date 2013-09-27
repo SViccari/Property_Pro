@@ -1,0 +1,29 @@
+<h1>Current Properties</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Street Address</th>
+      <th>City</th>
+      <th>State</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @building.each do |building| %>
+      <tr>
+        <td><%= building.street_address %></td>
+        <td><%= building.city %></td>
+        <td><%= building.state %></td>
+        <td><%= link_to 'Show', building %></td>
+        <td><%= link_to 'Edit', edit_building_path(building) %></td>
+        <td><%= link_to 'Destroy', building_path(building), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<!--         delete is HTTP verb used to hit the Rails destroy action
+        destroy is the Rails action -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Building', new_building_path %><br>
+<%= link_to 'New Building Owner', new_owner_path %>
