@@ -9,6 +9,8 @@ class BuildingsController < ApplicationController
     @building = Building.new
   end
 
+  def edit
+  end
 
   def create
     @building = Building.new(building_params)
@@ -20,7 +22,19 @@ class BuildingsController < ApplicationController
     end
   end
 
-   def destroy
+  def update
+    respond_to do |format|
+      if @building.update(building_params)
+        format.html { redirect_to @building, notice: 'Information was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @building.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
     @building = Building.find(params[:id])
     @building.destroy
     respond_to do |format|
@@ -33,7 +47,7 @@ class BuildingsController < ApplicationController
   def building_params
     params.require(:building).permit(
       :street_address, :city, :state, 
-      :postal_code, :description)
+      :postal_code, :description, :owners)
   end 
 
   def set_building

@@ -8,7 +8,7 @@
   <%- end -%>
   
   <div class="form-header">
-  <h1>Add a New Building</h1>
+  <h1>Edit Building Information</h1>
   </div>
 
   <div>
@@ -38,21 +38,21 @@
   </div>
   
   <div class="form-header">
-    <h1>Building Owner</h1>
+    <h1>Edit Building Owner</h1>
   </div>
 
-  <%= f.fields_for :owners do |f| %>
-    <%= f.label :first_name, "First name" %><br>
-    <%= f.text_field :first_name %><br>
+  <%= f.fields_for :owners do |builder| %>
+    <%= builder.label :first_name, "First name" %><br>
+    <%= builder.text_field :first_name %><br>
   
-    <%= f.label :last_name, "Last name" %><br>
-    <%= f.text_field :last_name %><br>
+    <%= builder.label :last_name, "Last name" %><br>
+    <%= builder.text_field :last_name %><br>
 
-    <%= f.label :email, "Email" %><br>
-    <%= f.text_field :email %><br>
+    <%= builder.label :email, "Email" %><br>
+    <%= builder.text_field :email %><br>
 
-    <%= f.label :company_name, "Company name" %><br>
-    <%= f.text_field :company_name %>
+    <%= builder.label :company_name, "Company name" %><br>
+    <%= builder.text_field :company_name %>
   <%- end -%>
 
   <div>
