@@ -36,28 +36,17 @@
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
-  
-  <div class="form-header">
-    <h1>Building Owner</h1>
+
+  <div>
+    <%= f.label :owner_id %><br>
+    <%= select_tag "building[owner_id]",
+      options_for_select(Building.owner_list) %>
   </div>
-
-  <%= f.fields_for :owners do |f| %>
-    <%= f.label :first_name, "First name" %><br>
-    <%= f.text_field :first_name %><br>
-  
-    <%= f.label :last_name, "Last name" %><br>
-    <%= f.text_field :last_name %><br>
-
-    <%= f.label :email, "Email" %><br>
-    <%= f.text_field :email %><br>
-
-    <%= f.label :company_name, "Company name" %><br>
-    <%= f.text_field :company_name %>
-  <%- end -%>
 
   <div>
     <%= f.submit 'Save' %>
-  </div>
+  </div><br>
 <%- end -%>
 
-<%= link_to 'Home', buildings_path %>
+<%= link_to 'Home', buildings_path %><br>
+<%= link_to 'Add Building Owner', new_owner_path %>

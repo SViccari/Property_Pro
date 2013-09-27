@@ -20,6 +20,10 @@ class Building < ActiveRecord::Base
   #   end
   # end
 
+  def self.owner_list
+    @owners = Owner.all
+  end
+
   def self.states
     ["",
     "Alabama",

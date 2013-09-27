@@ -21,12 +21,7 @@ feature 'add a building owner', %Q{
 
   scenario 'specify valid owner information' do 
     #---totally not DRY...but it's green---
-    visit new_building_url
-    fill_in 'Street address', with: '2 China Moon'
-    fill_in 'City', with: 'Ormond Beach'
-    select 'Florida', from: 'State'
-    fill_in 'Postal code', with: 12345
-    fill_in 'Description', with: 'Grade A Building'
+    visit new_owner_url
     fill_in 'First name', with: 'Lloyd'
     fill_in 'Last name', with: 'Christmas'
     fill_in 'Email', with: 'mostannoyingsound@gmail.com'

@@ -35,29 +35,11 @@
   <div>
     <%= f.label :description %><br>
     <%= f.text_field :description %>
-  </div>
-  
-  <div class="form-header">
-    <h1>Edit Building Owner</h1>
-  </div>
-
-  <%= f.fields_for :owners do |builder| %>
-    <%= builder.label :first_name, "First name" %><br>
-    <%= builder.text_field :first_name %><br>
-  
-    <%= builder.label :last_name, "Last name" %><br>
-    <%= builder.text_field :last_name %><br>
-
-    <%= builder.label :email, "Email" %><br>
-    <%= builder.text_field :email %><br>
-
-    <%= builder.label :company_name, "Company name" %><br>
-    <%= builder.text_field :company_name %>
-  <%- end -%>
+  </div><br>
 
   <div>
     <%= f.submit 'Save' %>
-  </div>
+  </div><br>
 <%- end -%>
 
 <%= link_to 'Home', buildings_path %>
