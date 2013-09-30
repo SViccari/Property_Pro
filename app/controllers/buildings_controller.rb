@@ -14,6 +14,7 @@ class BuildingsController < ApplicationController
 
   def create
     @building = Building.new(building_params)
+    #binding.pry
 
     if @building.save
       redirect_to new_building_path, notice: 'Information has been saved.'
@@ -47,7 +48,7 @@ class BuildingsController < ApplicationController
   def building_params
     params.require(:building).permit(
       :street_address, :city, :state, 
-      :postal_code, :description, :owners)
+      :postal_code, :description, :owners, :owner_id)
   end 
 
   def set_building

@@ -23,7 +23,8 @@
 
   <div>
     <%= f.label :state %><br>
-    <%= select_tag "building[state]",
+    <%= f.select :state, options_for_select(Building.states, selected: @building.state) %>
+    <%# select_tag "building[state]",
       options_for_select(Building.states) %>
   </div>
 

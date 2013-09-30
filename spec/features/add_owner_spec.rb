@@ -29,6 +29,20 @@ feature 'add a building owner', %Q{
 
     click_button 'Save'
     expect(page).to have_content('Information has been saved.')
+    visit new_building_path
+
+    owner = Owner.last
+
+    fill_in 'Street address', with: '2 China Moon'
+    fill_in 'City', with: 'Ormond Beach'
+    select 'Florida', from: 'State'
+    select owner.name_and_email, from: 'Owner'
+    fill_in 'Postal code', with: 12345
+    fill_in 'Description', with: 'Grade A Building'
+
+    click_button 'Save'
+    expect(page).to have_content('Information has been saved.')
+    expect(Building.last.owner).to eq(owner)
   end
 
   scenario 'specify invalid information' do

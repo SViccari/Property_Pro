@@ -40,7 +40,7 @@
 
   <div>
     <%= f.label :owner_id %><br>
-    <%= f.select :owner_id, options_for_select(Building.owner_list.map{|owner| [owner.name_and_email, owner.id] }.unshift(["",""]), selected: @building.owner) %>
+    <%= f.select :owner, options_for_select(Building.owner_list.map(&:name_and_email), selected: @building.owner) %>
 
     <%# select_tag "building[owner_id]", options_for_select(Building.owner_list.map(&:name_and_email)) %>
   </div>
